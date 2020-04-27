@@ -7,6 +7,7 @@ session_start();
 $toke_byte = openssl_random_pseudo_bytes(16);
 $csrf_token = bin2hex($toke_byte);
 $_SESSION['csrf_token'] = $csrf_token;
+$_SESSION['init'] = $_POST['init'];
 
 ?>
 <!DOCTYPE html>
@@ -25,6 +26,12 @@ $_SESSION['csrf_token'] = $csrf_token;
     <input type="hidden" name="csrf" value="<?php echo $csrf_token; ?>"/>
     <input type="submit" />
 </form>
+
+<p>
+    <?php
+        var_dump($_SESSION);
+    ?>
+</p>
 
 </body>
 </html>
